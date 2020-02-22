@@ -1,6 +1,7 @@
 package com.group4.int20h.domain;
 
 import com.group4.int20h.enumeration.Sex;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -9,7 +10,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "Dog")
-public class Dog implements Item{
+public class Dog implements Item {
   @Id
   @GeneratedValue
   @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -21,6 +22,8 @@ public class Dog implements Item{
 
   private int age;
 
+  @CreationTimestamp
+  @Temporal(TemporalType.TIMESTAMP)
   private Date since;
 
   private String description;
