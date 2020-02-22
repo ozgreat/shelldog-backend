@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "Dog")
-public class Dog {
+public class Dog implements Item{
   @Id
   @GeneratedValue
   @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -35,10 +35,12 @@ public class Dog {
   public Dog() {
   }
 
+  @Override
   public UUID getId() {
     return id;
   }
 
+  @Override
   public void setId(UUID id) {
     this.id = id;
   }

@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "User")
-public class User {
+public class User implements Item{
   @Id
   @GeneratedValue
   @GenericGenerator(name = "uuid", strategy = "uuid2")

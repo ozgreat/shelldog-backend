@@ -17,7 +17,7 @@ public class Post {
   @ManyToOne
   private User author;
 
-  private String title;
+  private String name;
 
   private String body;
 
@@ -44,12 +44,12 @@ public class Post {
     this.author = author;
   }
 
-  public String getTitle() {
-    return title;
+  public String getName() {
+    return name;
   }
 
-  public void setTitle(String title) {
-    this.title = title;
+  public void setName(String title) {
+    this.name = title;
   }
 
   public String getBody() {
