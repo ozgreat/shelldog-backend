@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "Post")
-public class Post {
+public class Post implements Item {
   @Id
   @GeneratedValue
   @GenericGenerator(name = "uuid", strategy = "uuid2")
