@@ -4,9 +4,11 @@ import com.group4.int20h.domain.Dog;
 import com.group4.int20h.domain.Organization;
 import com.group4.int20h.enumeration.Sex;
 import com.group4.int20h.repo.DogRepo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DogService extends AbstractCrudService<Dog, DogRepo> {
   public DogService(DogRepo repo) {
     super(repo);
@@ -155,6 +157,6 @@ public class DogService extends AbstractCrudService<Dog, DogRepo> {
 
   public List<Dog> getAllBySexAndBreedAndOrganization_CityAndAgeBetween(Sex sex, String breed, String city, int ageFrom,
                                                                         int ageTo){
-    return repo.findAllBySexAndBreedAndOrganization_CityAndAgeBetween(sex, breed, city, ageFrom, ageTo)
+    return repo.findAllBySexAndBreedAndOrganization_CityAndAgeBetween(sex, breed, city, ageFrom, ageTo);
   }
 }
