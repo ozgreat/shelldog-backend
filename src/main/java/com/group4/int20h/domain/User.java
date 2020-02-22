@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "Usr")
-public class User implements Item{
+public class User implements Item {
   @Id
   @GeneratedValue
   @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -21,6 +21,8 @@ public class User implements Item{
 
   private Role role;
 
+  private String avatarUrl;
+
   private String password;
 
   private String firstName;
@@ -28,14 +30,16 @@ public class User implements Item{
   private String lastName;
 
   public User() {
+    avatarUrl = "https://i.imgur.com/i39NX96.png";
   }
 
-  public User(String email, Role role, String password, String firstName, String lastName) {
+  public User(String email, Role role, String password, String firstName, String lastName, String avatarUrl) {
     this.email = email;
     this.role = role;
     this.password = password;
     this.firstName = firstName;
     this.lastName = lastName;
+    this.avatarUrl = avatarUrl;
   }
 
   public UUID getId() {
@@ -84,5 +88,13 @@ public class User implements Item{
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
+  }
+
+  public String getAvatarUrl() {
+    return avatarUrl;
+  }
+
+  public void setAvatarUrl(String avatarUrl) {
+    this.avatarUrl = avatarUrl;
   }
 }
