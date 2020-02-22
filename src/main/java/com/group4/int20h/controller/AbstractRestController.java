@@ -34,7 +34,7 @@ public class AbstractRestController<T extends Item, S extends AbstractCrudServic
   }
 
   @DeleteMapping("{id}")
-  public void delete(@RequestBody T item) {
+  public void delete(@PathVariable("id") T item) {
     service.delete(item);
   }
 }

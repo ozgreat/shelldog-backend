@@ -1,5 +1,6 @@
 package com.group4.int20h.domain;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -23,6 +24,8 @@ public class Post implements Item {
 
   private String attachmentLink;
 
+  @CreationTimestamp
+  @Temporal(TemporalType.TIMESTAMP)
   private Date created;
 
   public Post() {

@@ -32,7 +32,7 @@ public abstract class AbstractCrudService<T extends Item, R extends JpaRepositor
   }
 
   public T update(T oldItem, T newItem) {
-    BeanUtils.copyProperties(oldItem, newItem, "id");
+    BeanUtils.copyProperties(newItem, oldItem, "id");
 
     return repo.save(oldItem);
   }
