@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "Organization")
-public class Organization implements Item{
+public class Organization implements Item {
   @Id
   @GeneratedValue
   @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -24,6 +24,7 @@ public class Organization implements Item{
   @OneToOne
   private User creator;
 
+  @Column(name = "DESC", columnDefinition = "TEXT")
   private String description;
 
   public Organization() {
