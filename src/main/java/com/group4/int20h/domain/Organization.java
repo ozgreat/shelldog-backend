@@ -24,7 +24,7 @@ public class Organization implements Item {
   @OneToOne
   private User creator;
 
-  @Column(name = "DESC", columnDefinition = "TEXT")
+  @Lob
   private String description;
 
   public Organization() {
