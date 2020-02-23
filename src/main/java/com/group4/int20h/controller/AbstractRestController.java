@@ -5,6 +5,7 @@ import com.group4.int20h.service.AbstractCrudService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 public class AbstractRestController<T extends Item, S extends AbstractCrudService<T, ?>> {
   S service;
@@ -34,7 +35,7 @@ public class AbstractRestController<T extends Item, S extends AbstractCrudServic
   }
 
   @DeleteMapping("{id}")
-  public void delete(@PathVariable("id") T item) {
-    service.delete(item);
+  public void delete(@PathVariable("id") UUID item) {
+    service.delete(service.getById(item));
   }
 }
