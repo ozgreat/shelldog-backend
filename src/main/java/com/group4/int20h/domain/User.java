@@ -31,6 +31,7 @@ public class User implements Item {
 
   public User() {
     avatarUrl = "https://i.imgur.com/i39NX96.png";
+    role = Role.USER;
   }
 
   public User(String email, Role role, String password, String firstName, String lastName, String avatarUrl) {

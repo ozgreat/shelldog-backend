@@ -1,11 +1,9 @@
 package com.group4.int20h.controller;
 
 import com.group4.int20h.domain.Organization;
+import com.group4.int20h.enumeration.Role;
 import com.group4.int20h.service.OrganizationService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +17,14 @@ public class OrganizationController extends AbstractRestController<Organization,
   @GetMapping("city")
   public List<Organization> listFromCity(@RequestParam("name") String city) {
     return service.getAllFromCity(city);
+  }
+
+  @PostMapping("create")
+  @Override
+  public Organization add(Organization item) {
+    if (item.getCreator().getRole() != Role.ORGANIZER) {
+      item.getCreator().setRole(Role.ORGANIZER);
+    }
+    return super.add(item);
   }
 }
