@@ -21,7 +21,7 @@ public class OrganizationController extends AbstractRestController<Organization,
 
   @PostMapping("create")
   @Override
-  public Organization add(Organization item) {
+  public Organization add(@RequestBody Organization item) {
     if (item.getCreator().getRole() != Role.ORGANIZER) {
       item.getCreator().setRole(Role.ORGANIZER);
     }
