@@ -1,8 +1,10 @@
 package com.group4.int20h.controller;
 
 import com.group4.int20h.domain.Organization;
+import com.group4.int20h.domain.User;
 import com.group4.int20h.enumeration.Role;
 import com.group4.int20h.service.OrganizationService;
+import com.group4.int20h.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,8 +12,11 @@ import java.util.List;
 @RestController
 @RequestMapping(("/organization"))
 public class OrganizationController extends AbstractRestController<Organization, OrganizationService> {
-  public OrganizationController(OrganizationService service) {
+  private UserService userService;
+
+  public OrganizationController(OrganizationService service, UserService userService) {
     super(service);
+    this.userService = userService;
   }
 
   @GetMapping("city")
@@ -23,7 +28,10 @@ public class OrganizationController extends AbstractRestController<Organization,
   @Override
   public Organization add(@RequestBody Organization item) {
     if (item.getCreator().getRole() != Role.ORGANIZER) {
-      item.getCreator().setRole(Role.ORGANIZER);
+      User user = item.getCreator();
+      user.setRole(Role.ORGANIZER);
+      userService.update(item.getCreator(), user);
+      item.setCreator(user);
     }
     return super.add(item);
   }
